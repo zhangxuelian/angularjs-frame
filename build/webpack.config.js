@@ -11,6 +11,7 @@ let webpackConfig = {
         filename: '[name].js',
         path: path.join(__dirname, '../dist')
     },
+    devtool: 'cheap-module-eval-source-map',
     module: {
         rules: [
             {
@@ -26,18 +27,14 @@ let webpackConfig = {
     resolve: {
         // 别名
         alias: {
-            angularjs: path.resolve(__dirname, '../lib/angularjs/angular.js'),
-            lib$: path.resolve(__dirname, '../lib'),
-            modules$: path.resolve(__dirname, '../src/modules')
+            angular$: path.resolve(__dirname, '../lib/angularjs/angular.js'),
+            lib: path.resolve(__dirname, '../lib'),
+            modules: path.resolve(__dirname, '../src/modules')
         },
         // 自动解析定义的扩展后缀
         extensions: [".js", ".json"]
     },
     plugins: [
-        // 自动加载模块，而不必 import 或 require
-        new webpack.ProvidePlugin({
-            angular: 'angularjs'
-        }),
         new HtmlWebpackPlugin({
             title: 'angularjs+webpack框架',
             filename: 'index.html',
@@ -46,5 +43,5 @@ let webpackConfig = {
     ],
     // https://www.webpackjs.com/configuration/target/
     target: 'web'
-}
+};
 module.exports = webpackConfig;
