@@ -1,26 +1,23 @@
-const couchPotato = require('lib/angularjs-tools/angular-couch-potato');
-require('lib/angular-ui-router/release/angular-ui-router');
+require('angular');
+require('oclazyload');
+require('uiRouter');
 require('./router');
 
-const app = angular.module('app', ['scs.couch-potato', 'router', 'ui.router']);
-
-couchPotato.configureApp(app);
+const app = angular.module('app', ['router', 'ui.router', 'oc.lazyLoad']);
 
 app.config(['$urlRouterProvider', function ($urlRouterProvider) {
     $urlRouterProvider.otherwise('home');
 }]);
 
-app.run(['$couchPotato', '$rootScope', function ($couchPotato, $rootScope) {
-    app.lazy = $couchPotato;
-    $rootScope.$on("$stateChangeStart", [() => {
+app.run(['$rootScope', function ($rootScope) {
+    /* $rootScope.$on("$stateChangeStart", [function () {
         console.log('stateChangeStart');
     }])
-    $rootScope.$on("$stateChangeSuccess", [() => {
+    $rootScope.$on("$stateChangeSuccess", [function () {
         console.log('stateChangeSuccess');
     }])
-    $rootScope.$on("$viewContentLoaded", [() => {
+    $rootScope.$on("$viewContentLoaded", [function () {
         console.log('viewContentLoaded');
-    }])
+    }]) */
 }]);
-
 module.exports = app;

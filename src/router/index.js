@@ -1,14 +1,22 @@
-require('lib/angularjs-tools/angular-couch-potato');
-const path = require('path');
-angular.module('router', ['scs.couch-potato', 'ui.router']).config(['$stateProvider', '$urlRouterProvider', '$couchPotatoProvider',
-    function ($stateProvider, $urlRouterProvider, $couchPotatoProvider) {
-        $urlRouterProvider.otherwise('home');
+angular.module('router', ['ui.router']).config(['$stateProvider',
+    function ($stateProvider) {
         $stateProvider.state('home', {
             url: '/home',
-            templateUrl: path.join(__dirname, 'modules/home/index.tpl.html'),
+            templateUrl: 'src/modules/home/index.tpl.html',
             controller: 'homeCtrl',
             resolve: {
-                dummy: $couchPotatoProvider.resolveDependencies([path.join(__dirname, 'modules/home/index.ctrl.js')])
+                load: ['$q', '$ocLazyLoad', function ($q, $ocLazyLoad) {
+                    let deferred = $q.defer();
+                    require.ensure([], function () {
+                        let module = require('../modules/home/index.ctrl.js')(angular);
+                        $ocLazyLoad.load({
+                            name: 'home'
+                        });
+                        deferred.resolve(module);
+                    });
+
+                    return deferred.promise;
+                }]
             }
         })
     }]);
