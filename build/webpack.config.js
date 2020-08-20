@@ -14,16 +14,33 @@ let webpackConfig = {
     devtool: 'cheap-module-eval-source-map',
     module: {
         rules: [
+            // css-loader是支持CSS Modules的
             {
-                test: '/\.css$/',
-                use: ['style-loader', 'css-loader']
+                test: /\.css$/,
+                use: ['style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true
+                        }
+                    }
+                ]
+            },
+            // 编译方向从右到左less-loader=>css-loader=>style-loader
+            {
+                test: /\.less$/,
+                use: ['style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true
+                        }
+                    },
+                    'less-loader'
+                ]
             },
             {
-                test: '/\.less$/',
-                use: ['style-loader', 'css-loader', 'less-loader']
-            },
-            {
-                test: /\.(html)$/,
+                test: /\.html$/,
                 use: {
                     loader: 'html-loader'
                 }

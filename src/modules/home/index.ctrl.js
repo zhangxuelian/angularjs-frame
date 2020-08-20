@@ -1,7 +1,6 @@
-module.exports = (Angular) => {
-    const home = Angular.module('home', []);
-    //require('./index.less');
-    home.controller('homeCtrl', ['$scope', function ($scope) {
-        $scope.test = "作用域测试";
-    }]);
-}
+require('./index.less');
+const home = angular.module('home', []);
+home.controller('homeCtrl', ['$scope', function ($scope) {
+    var home = this;
+    home.vm = "作用域测试";
+}]);
