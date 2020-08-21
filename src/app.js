@@ -1,3 +1,5 @@
-const app = angular.module('app', []);
+require('./components');
+
+const app = angular.module('app', ['components']);
 
 module.exports = app;

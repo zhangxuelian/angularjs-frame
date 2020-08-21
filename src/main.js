@@ -3,7 +3,9 @@ require('angular');
 require('uiRouter');
 require('oclazyload');
 
-require('./assets/reset.less');
+// 全局样式
+require('assets/css/reset.less');
+require('assets/css/layout.less');
 
 // 将app模块传入路由器，路由中配置的控制器均在app上注册，统一管理各个路由页面的模块依赖
 const app = require('./app');

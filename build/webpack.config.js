@@ -39,10 +39,9 @@ let webpackConfig = {
                     loader: 'html-loader'
                 }
             },
-            // url-loader封装了file-loader,内置了file-loader,
             // 1.文件大小小于limit参数，url-loader将会把文件转为DataURL；2.文件大小大于limit，url-loader会调用file-loader进行处理，参数也会直接传给file-loader。
             {
-                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+                test: /\.(png|jpe?g|ico|gif|svg)(\?.*)?$/,
                 use: {
                     loader: 'url-loader',
                     query: {
@@ -75,7 +74,8 @@ let webpackConfig = {
             angular$: path.resolve(__dirname, '../lib/angularjs/angular.js'),
             uiRouter$: path.resolve(__dirname, '../lib/angular-ui-router/release/angular-ui-router.js'),
             lib: path.resolve(__dirname, '../lib'),
-            modules: path.resolve(__dirname, '../src/modules')
+            modules: path.resolve(__dirname, '../src/modules'),
+            assets: path.resolve(__dirname,'../src/assets')
         },
         // 自动解析定义的扩展后缀
         extensions: [".js", ".json"]

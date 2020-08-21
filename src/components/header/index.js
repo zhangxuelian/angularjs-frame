@@ -1,12 +1,16 @@
+require('./index.less');
 angular.module('header', [])
     .directive('myHeader', [function () {
         return {
             restrict: 'E',
             replace: true,
-            scope: '=',
+            scope: {
+                headerConfig: '='
+            },
             template: require('./index.html'),
-            link() {
-                
+            link(scope, ele, attr) {
+                scope.logo = require('assets/img/favicon.ico').default;
+                console.log(scope.logo);
             }
         }
     }]);
