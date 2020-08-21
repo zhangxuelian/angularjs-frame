@@ -19,10 +19,7 @@ let webpackConfig = {
                 test: /\.css$/,
                 use: ['style-loader',
                     {
-                        loader: 'css-loader',
-                        options: {
-                            modules: true
-                        }
+                        loader: 'css-loader'
                     }
                 ]
             },
@@ -31,10 +28,7 @@ let webpackConfig = {
                 test: /\.less$/,
                 use: ['style-loader',
                     {
-                        loader: 'css-loader',
-                        options: {
-                            modules: true
-                        }
+                        loader: 'css-loader'
                     },
                     'less-loader'
                 ]
