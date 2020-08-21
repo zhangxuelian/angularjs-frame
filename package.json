@@ -7,7 +7,7 @@
     "dev": "node build/dev.runner.js",
     "build": "node build/pack.builder.js"
   },
-  "author": "zhangxuelian<76303248@qq.com>",
+  "author": "zhangxuelian<761303248@qq.com>",
   "license": "ISC",
   "dependencies": {
     "angular": "^1.3.20",
