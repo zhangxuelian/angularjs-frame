@@ -2,10 +2,8 @@
     <div class="header-content">
         <div class="logo-title"><img ng-src="{{logo}}" /><span>angularjs-frame</span></div>
         <ul class="menu-list">
-            <li>home</li>
-            <li>new</li>
-            <li>about</li>
+            <li ui-sref="{{item}}" ng-class="{active: headerConfig.active == item}" ng-repeat="item in menu">{{item}}
+            </li>
         </ul>
     </div>
-
 </div>

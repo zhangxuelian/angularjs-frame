@@ -10,7 +10,7 @@ angular.module('header', [])
             template: require('./index.html'),
             link(scope, ele, attr) {
                 scope.logo = require('assets/img/favicon.ico').default;
-                console.log(scope.logo);
+                scope.menu = ['home','new','about']
             }
         }
     }]);

@@ -63,7 +63,7 @@ module.exports = (app) => {
                         return deferred.promise;
                     }]
                 }
-            })
+            });
             
         }]);
 }
