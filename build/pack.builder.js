@@ -4,6 +4,8 @@ const webpackConfig = require('./webpack.config');
 // 会将 process.env.NODE_ENV 的值设为 production。
 // 启用 FlagDependencyUsagePlugin, FlagIncludedChunksPlugin, ModuleConcatenationPlugin, NoEmitOnErrorsPlugin, OccurrenceOrderPlugin, SideEffectsFlagPlugin 和 UglifyJsPlugin.
 webpackConfig.mode = 'production';
+// https://www.webpackjs.com/configuration/devtool/
+webpackConfig.devtool = '';
 let compiler = webpack(webpackConfig);
 compiler.run((err, stats) => {
     if (err) {
